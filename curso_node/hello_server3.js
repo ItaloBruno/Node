@@ -8,7 +8,6 @@ var server = http.createServer((request,response) =>{
     else
         response.write('<h1>Pagina nao encontrada</h1>')
     
-
     response.end()
 })
 
