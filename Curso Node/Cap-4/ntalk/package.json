@@ -1,0 +1,13 @@
+{
+  "name": "ntalk",
+  "version": "0.0.1",
+  "private": false,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "ejs": "~2.5.7",
+    "express": "~4.15.5",
+    "express-load": "1.1.7"
+  }
+}
