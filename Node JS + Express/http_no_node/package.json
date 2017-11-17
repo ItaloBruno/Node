@@ -1,12 +1,8 @@
 {
-  "name": "NodeJS",
+  "name": "http_no_node",
   "version": "1.0.0",
   "description": "",
-  "main": "hello.js",
-  "dependencies": {
-    "express": "^4.15.5"
-  },
-  "devDependencies": {},
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
