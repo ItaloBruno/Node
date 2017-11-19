@@ -13,3 +13,17 @@ Ex: nodemon app.js
 
 Instalando o EJS:
 mpm install ejs --save
+
+O que são módulos?
+Permitem organizar o código
+Isolar uma determinada lógica e permitir sua utilização de forma recorrente dentro de uma aplicação.
+Permite também a reutilização dessa lógica em outros projetos.
+Possibilidade de distribuir esse módulo na internet para outros desenvolvedore.
+
+O que é o CommomJS?
+CommomJS é uma API com o objetivo de agrupar as necessidades de 
+diversas aplicações javascript em uma única API, que funcione em
+diversos ambientes e interpretadores. Criando o conceito de módulos
+que façam essas funções. E estes módulos podem ser carregados 
+assicronamente com ferramentas AMD.
+ 
