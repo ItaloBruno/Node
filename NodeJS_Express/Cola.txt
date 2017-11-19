@@ -10,3 +10,6 @@ npm install -g nodemon
 Rodar o servidor com nodemon:
 nodemon <nome do arquivo responsável por subir o server>
 Ex: nodemon app.js
+
+Instalando o EJS:
+mpm install ejs --save
