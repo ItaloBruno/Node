@@ -13,5 +13,10 @@
         <p><%= texto %></p>
         <% var texto1 = 'Refatorado'; %>
         <p><%= texto1 %></p>
+        <ul>
+            <%for (let chave in clientes){ %>
+                <li><%= clientes[chave].nome %> - <%= clientes[chave].email%></li>
+            <% }%>
+        </ul>
     </body>
 </html>
