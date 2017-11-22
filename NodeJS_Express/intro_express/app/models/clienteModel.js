@@ -1,26 +1,13 @@
-const mysql = require('mysql');
-
-const conexao = mysql.createConnection({
-    host: '127.0.0.1',
-    user: 'root',
-    password:'1234',
-    database: 'curso_node'
-});
-
-
+//Importando as configurações do banco de dados
+const db = require('../../config/db');
 
 //Regras de negócio
 module.exports = () =>{
-    this.all = () =>{
-
-        conexao.query('SELECT * FROM clientes', (erro, resultado) =>{
-            console.log(resultado);
-        });
-
-        return [
-            {nome: 'Italo', email: 'italobruno_207@hotmail.com'},
-            {nome: 'Maria', email: 'mariadobairro@hotmail.com'}
-        ];
+    this.all = (retorno) =>{
+        //Instacia a conexão com o banco de dados
+        const conexao = db();
+        //Retorna a query que foi solicitada e o callback que foi implementado no web.js
+        return conexao.query('SELECT * FROM clientes',retorno);
     };
 
     //Retorna esse model com todas as regras estabelecidas
