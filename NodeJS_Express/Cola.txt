@@ -47,3 +47,9 @@ Seus métodos chamados actions são responsáveis por uma página,
 controlando qual model usar e qual view será mostrado ao usuário.
 
 ======================================================================================================
+
+Módulo para Mysql:
+npm install mysql --save
+
+Instalar o body-parser:
+npm install body-parser --save
