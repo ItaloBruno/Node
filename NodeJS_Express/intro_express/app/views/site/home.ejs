@@ -15,8 +15,23 @@
         <p><%= texto1 %></p>
         <ul>
             <%for (let chave in clientes){ %>
-                <li><%= clientes[chave].idclientes %> - <%= clientes[chave].nome %> - <%= clientes[chave].email%></li>
+                <li><%= clientes[chave].nome %> - <%= clientes[chave].email%></li>
             <% }%>
         </ul>
+        <br>
+        <% if(erros){ %>
+        <ul>
+            <%for (let chave in erros){ %>
+                <li><%= erros[chave].msg %></li>
+            <% }%>
+        </ul>
+        <% } %>
+        <br>
+        <form action = "/" method = "post">
+            <input type="text" name="nome"  placeholder="Nome">
+            <input type="text" name="email" placeholder="Email">
+            <button>Salvar Novo Registro</button>
+
+        </form>
     </body>
 </html>

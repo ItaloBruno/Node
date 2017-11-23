@@ -17,6 +17,14 @@ module.exports = () =>{
         return conexao.query('SELECT * FROM clientes where idclientes = ?', id, retorno);
     };
 
+    this.save = (dados, retorno) =>{
+        const conexao = db();
+        return conexao.query('insert into clientes set ?', dados, retorno);
+    };
+
+    this.delete = (dados, retorno) =>{
+    };
+
     //Retorna esse model com todas as regras estabelecidas
     return this;
 };
