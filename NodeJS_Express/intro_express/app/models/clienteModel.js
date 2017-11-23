@@ -7,7 +7,14 @@ module.exports = () =>{
         //Instacia a conexão com o banco de dados
         const conexao = db();
         //Retorna a query que foi solicitada e o callback que foi implementado no web.js
-        return conexao.query('SELECT * FROM clientes',retorno);
+        return conexao.query('SELECT * FROM clientes', retorno);
+    };
+
+    this.find = (id, retorno) =>{
+        //Instacia a conexão com o banco de dados
+        const conexao = db();
+        //Retorna a query que foi solicitada e o callback que foi implementado no web.js
+        return conexao.query('SELECT * FROM clientes where idclientes = ?', id, retorno);
     };
 
     //Retorna esse model com todas as regras estabelecidas

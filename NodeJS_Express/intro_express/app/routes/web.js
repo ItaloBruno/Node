@@ -1,14 +1,14 @@
-var clienteModel = require('../models/clienteModel')();
+const clienteController = require('../controllers/clienteController');
 
 //Exportando as rotas
 module.exports = (app) =>{
     //==========================================================
     app.get('/', (request, response) =>{
-
-        clienteModel.all((erro, resultado)=>{
-            response.render('site/home', {clientes: resultado});
-        });
-   
+        clienteController.index(request, response);   
+    });
+    //==========================================================
+    app.get('/detalhe/:id', (request, response) =>{
+        clienteController.show(request, response);   
     });
     //==========================================================
     app.get('/contato', (request, response) =>{       

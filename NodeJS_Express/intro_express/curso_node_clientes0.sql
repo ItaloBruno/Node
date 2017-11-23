@@ -36,7 +36,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (1,'Guilherme','gui@mail.com'),(2,'Mari','mari@mail.com'),(3,'Aline','al@mail.com'),(4,'guilherme','gui@mail.com'),(5,'maria','mari@mail.com'),(6,'aline','al@mail.com');
+INSERT INTO `clientes` VALUES (1,'Guilherme','gui@mail.com'),(2,'Mari','mari@mail.com'),(3,'Aline','al@mail.com');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-22  0:45:26
+-- Dump completed on 2017-11-22 21:28:03
