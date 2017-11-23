@@ -28,8 +28,8 @@
         <% } %>
         <br>
         <form action = "/" method = "post">
-            <input type="text" name="nome"  placeholder="Nome">
-            <input type="text" name="email" placeholder="Email">
+            <input type="text" name="nome"  placeholder="Nome" value="<%= dados.nome %>">
+            <input type="text" name="email" placeholder="Email" value="<%= dados.email %>">
             <button>Salvar Novo Registro</button>
 
         </form>

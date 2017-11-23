@@ -2,7 +2,7 @@ const clienteModel = require('../models/clienteModel')();
 
 module.exports.index = (request, response) =>{
     clienteModel.all((erro, resultado) =>{
-        response.render('site/home', {clientes: resultado, erros: {}});
+        response.render('site/home', { clientes: resultado, erros: {}, dados: {} });
     });
 };
 
@@ -21,15 +21,17 @@ module.exports.store = (request, response) =>{
     var dados = request.body;
     //Validação de dados
     request.assert('nome', 'Preencha um Nome').notEmpty();
+    request.assert('nome', 'O nome deve ter de 3 a 20 caracteres').len(3, 20);
 
-    //request.assert('email', 'Preencha');
+    request.assert('email', 'Preencha um email').notEmpty();
+    request.assert('email', 'Preencha um email válido').isEmail();
 
     var validacaoErros = request.validationErrors();
 
     if(validacaoErros){
         console.log(validacaoErros);
         clienteModel.all((erro, resultado) =>{
-            response.render('site/home', {clientes: resultado, erros: validacaoErros});
+            response.render('site/home', {clientes: resultado, erros: validacaoErros,dados: dados});
         });
         return;
     }
