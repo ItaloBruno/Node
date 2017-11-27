@@ -34,7 +34,7 @@ module.exports.store = (request, response) =>{
     if(validacaoErros){
         console.log(validacaoErros);
         clienteModel.all((erro, resultado) =>{
-            response.render('site/home', {clientes: resultado, erros: validacaoErros,dados: dados});
+            response.render('site/home', {clientes: resultado, erros: validacaoErros, dados: dados});
         });
         return;
     }
@@ -49,10 +49,27 @@ module.exports.store = (request, response) =>{
 };
 
 module.exports.delete = (request, response) =>{
-    clienteModel.all((erro, resultado) =>{
-        response.render('site/deletar', { clientes: resultado, erros: {}, dados: {} });
-    });
     var dados = request.body;
-    console.log(dados);
+    //Validação de dados
+    request.assert('nome', 'Preencha um Nome').notEmpty();
+    request.assert('nome', 'O nome deve ter de 3 a 20 caracteres').len(3, 20);
+
+    var validacaoErros = request.validationErrors();
+
+    if(validacaoErros){
+        console.log(validacaoErros);
+        clienteModel.all((erro, resultado) =>{
+            response.render('site/deletar', {clientes: resultado, erros: validacaoErros, dados: dados});
+        });
+        return;
+    }
+
+    clienteModel.delete(dados, (erro, resultado) =>{
+        if(!erro){
+            response.redirect('/deletar');
+        }else{
+            console.log("Erro ao deletar registro");            
+        }
+    });
 };
 
