@@ -1,8 +1,11 @@
 const clienteModel = require('../models/clienteModel')();
 
 module.exports.index = (request, response) =>{
+    var url = request.url;
     clienteModel.all((erro, resultado) =>{
-        response.render('site/home', { clientes: resultado, erros: {}, dados: {} });
+        if(url == '/')
+            url = '/home';
+        response.render(`site${url}`, { clientes: resultado, erros: {}, dados: {} });
     });
 };
 
@@ -46,6 +49,10 @@ module.exports.store = (request, response) =>{
 };
 
 module.exports.delete = (request, response) =>{
-
+    clienteModel.all((erro, resultado) =>{
+        response.render('site/deletar', { clientes: resultado, erros: {}, dados: {} });
+    });
+    var dados = request.body;
+    console.log(dados);
 };
 

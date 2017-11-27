@@ -23,6 +23,8 @@ module.exports = () =>{
     };
 
     this.delete = (dados, retorno) =>{
+        const conexao = db();
+        return conexao.query('delete from clientes where ?', dados, retorno);
     };
 
     //Retorna esse model com todas as regras estabelecidas

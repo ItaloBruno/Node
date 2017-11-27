@@ -10,12 +10,16 @@ module.exports = (app) =>{
     app.get('/detalhe/:id', (request, response) =>{
         clienteController.show(request, response);   
     });
-    /* //==========================================================
-    app.get('/contato', (request, response) =>{       
-        response.render('site/contato');
-    }); */
     //==========================================================
     app.post('/', (request, response) =>{       
         clienteController.store(request, response);
+    });
+    //==========================================================
+    app.get('/deletar', (request, response) =>{
+        clienteController.index(request, response);   
+    });
+    //==========================================================
+    app.post('/deletar', (request, response) =>{       
+        clienteController.delete(request, response);
     });  
 };
