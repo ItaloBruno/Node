@@ -1,6 +1,6 @@
 const clienteModel = require('../models/clienteModel')();
 
-module.exports.index = (request, response) =>{
+module.exports.show = (request, response) =>{
     var url = request.url;
     clienteModel.all((erro, resultado) =>{
         if(url == '/')
@@ -9,7 +9,7 @@ module.exports.index = (request, response) =>{
     });
 };
 
-module.exports.show = (request, response) =>{
+module.exports.index = (request, response) =>{
     clienteModel.find(request.params.id, (erro, resultado) =>{
         if(resultado[0] && !erro){
             response.render('site/detalhe', {cliente: resultado[0]});
@@ -48,6 +48,34 @@ module.exports.store = (request, response) =>{
     });
 };
 
+module.exports.update = (request, response) =>{
+    var dados = request.body;
+    //Validação de dados
+    request.assert('nome', 'Preencha um Nome').notEmpty();
+    request.assert('nome', 'O nome deve ter de 3 a 20 caracteres').len(3, 20);
+
+    request.assert('email', 'Preencha um email').notEmpty();
+    request.assert('email', 'Preencha um email válido').isEmail();
+
+    var validacaoErros = request.validationErrors();
+
+    if(validacaoErros){
+        console.log(validacaoErros);
+        clienteModel.all((erro, resultado) =>{
+            response.render('site/atualizar', {clientes: resultado, erros: validacaoErros, dados: dados});
+        });
+        return;
+    }
+
+    clienteModel.update(dados, (erro, resultado) =>{
+        if(!erro){
+            response.redirect('/');
+        }else{
+            console.log("Erro ao adicionar novo registro");            
+        }
+    });
+};
+
 module.exports.delete = (request, response) =>{
     var dados = request.body;
     //Validação de dados
@@ -66,7 +94,7 @@ module.exports.delete = (request, response) =>{
 
     clienteModel.delete(dados, (erro, resultado) =>{
         if(!erro){
-            response.redirect('/deletar');
+            response.redirect('/');
         }else{
             console.log("Erro ao deletar registro");            
         }

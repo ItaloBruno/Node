@@ -26,6 +26,15 @@ module.exports = () =>{
     };
 
     //====================================================================================
+    this.update = (dados, retorno) =>{
+        console.log(dados.nome);
+        console.log(dados.email);
+
+        const conexao = db();
+        return conexao.query('update clientes set ? where ?', dados, retorno);
+    };
+
+    //====================================================================================
     this.delete = (dados, retorno) =>{
         const conexao = db();
         return conexao.query('delete from clientes where ?', dados, retorno);

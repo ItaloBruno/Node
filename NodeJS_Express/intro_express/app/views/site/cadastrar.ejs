@@ -4,11 +4,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Deletar</title>
+        <title>Cadastro</title>
     </head>
 
     <body>
-        <h1>Deletar Registro</h1>
+        <h1>Cadastrar Novo Registro</h1>
         <p>Trabalhando com EJS</p>
         <p>Lista de Registro</p>
         <ul>
@@ -27,9 +27,10 @@
         <% } %>
 
         <br>
-        <form action = "/deletar" method = "post">
+        <form action = "/cadastrar" method = "post">
             <input type="text" name="nome"  placeholder="Nome" value="<%= dados.nome %>">
-            <button>Deletar Registro</button>
+            <input type="text" name="email" placeholder="Email" value="<%= dados.email %>">
+            <button>Salvar Novo Registro</button>
         </form>
 
     </body>

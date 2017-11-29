@@ -9,31 +9,12 @@
 
     <body>
         <h1>Principal</h1>
-        <% var texto = 'Trabalhando com EJS'; %>
-        <p><%= texto %></p>
-        <% var texto1 = 'Lista de Registro'; %>
-        <p><%= texto1 %></p>
+        <p>Trabalhando com EJS</p>
+        <p>Lista de Registro</p>
         <ul>
             <%for (let chave in clientes){ %>
                 <li><%= clientes[chave].nome %> - <%= clientes[chave].email%></li>
             <% }%>
         </ul>
-
-        <br>
-        <% if(erros){ %>
-        <ul>
-            <%for (let chave in erros){ %>
-                <li><%= erros[chave].msg %></li>
-            <% }%>
-        </ul>
-        <% } %>
-
-        <br>
-        <form action = "/" method = "post">
-            <input type="text" name="nome"  placeholder="Nome" value="<%= dados.nome %>">
-            <input type="text" name="email" placeholder="Email" value="<%= dados.email %>">
-            <button>Salvar Novo Registro</button>
-        </form>
-
     </body>
 </html>
