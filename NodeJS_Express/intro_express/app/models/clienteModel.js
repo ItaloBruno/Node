@@ -29,9 +29,13 @@ module.exports = () =>{
     this.update = (dados, retorno) =>{
         console.log(dados.nome);
         console.log(dados.email);
+        
+        var query = `update clientes set email = ${dados.email} where idclientes = 16`;
+
+        console.log(query);
 
         const conexao = db();
-        return conexao.query('update clientes set ? where ?', dados, retorno);
+        return conexao.query(query, retorno);
     };
 
     //====================================================================================

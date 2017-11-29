@@ -71,7 +71,7 @@ module.exports.update = (request, response) =>{
         if(!erro){
             response.redirect('/');
         }else{
-            console.log("Erro ao adicionar novo registro");            
+            console.log("Erro ao atualizar registro");            
         }
     });
 };
