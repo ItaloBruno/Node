@@ -32,7 +32,7 @@ module.exports.store = (request, response) =>{
     var validacaoErros = request.validationErrors();
 
     if(validacaoErros){
-        console.log(validacaoErros);
+        //console.log(validacaoErros);
         clienteModel.all((erro, resultado) =>{
             response.render('site/home', {clientes: resultado, erros: validacaoErros, dados: dados});
         });
@@ -60,7 +60,7 @@ module.exports.update = (request, response) =>{
     var validacaoErros = request.validationErrors();
 
     if(validacaoErros){
-        console.log(validacaoErros);
+        //console.log(validacaoErros);
         clienteModel.all((erro, resultado) =>{
             response.render('site/atualizar', {clientes: resultado, erros: validacaoErros, dados: dados});
         });
@@ -71,6 +71,7 @@ module.exports.update = (request, response) =>{
         if(!erro){
             response.redirect('/');
         }else{
+            console.log(erro);
             console.log("Erro ao atualizar registro");            
         }
     });
@@ -85,7 +86,7 @@ module.exports.delete = (request, response) =>{
     var validacaoErros = request.validationErrors();
 
     if(validacaoErros){
-        console.log(validacaoErros);
+        //console.log(validacaoErros);
         clienteModel.all((erro, resultado) =>{
             response.render('site/deletar', {clientes: resultado, erros: validacaoErros, dados: dados});
         });
