@@ -1,5 +1,6 @@
 const clienteModel = require('../models/clienteModel')();
 
+//Controle responsável por mostrar todos os dados da tabela criente e renderizar de acordo com cada solicitação
 module.exports.show = (request, response) =>{
     var url = request.url;
     clienteModel.all((erro, resultado) =>{
@@ -9,6 +10,7 @@ module.exports.show = (request, response) =>{
     });
 };
 
+//Controle responsável por mostrar o registro com o id que o usuário colocou na url, mostrando os seus detalhes de forma individual.
 module.exports.index = (request, response) =>{
     clienteModel.find(request.params.id, (erro, resultado) =>{
         if(resultado[0] && !erro){
@@ -20,6 +22,7 @@ module.exports.index = (request, response) =>{
     });
 };
 
+//Controle responsável por salvar um novo registro na tabela clientes
 module.exports.store = (request, response) =>{
     var dados = request.body;
     //Validação de dados
@@ -48,6 +51,7 @@ module.exports.store = (request, response) =>{
     });
 };
 
+//Controle responsável por atualizar o email de todos os registros com o nome especificado pelo usuário
 module.exports.update = (request, response) =>{
     var dados = request.body;
     //Validação de dados
@@ -77,6 +81,7 @@ module.exports.update = (request, response) =>{
     });
 };
 
+//Controle responsável por deletar todos os registros da tabela clientes que possuem o nome especificado pelo usuário
 module.exports.delete = (request, response) =>{
     var dados = request.body;
     //Validação de dados
