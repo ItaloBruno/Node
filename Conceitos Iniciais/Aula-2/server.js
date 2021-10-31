@@ -3,29 +3,29 @@
  * Se o usuário tentar acessar um arquivo inexistente, o servidor vai retornar uma página de erro.
  */
 
-var http = require('http');
-var fs = require('fs');
+var http = require("http");
+var fs = require("fs");
 
-var server = http.createServer((request, response)=>{
-    var page = 'index.html';
-    if (request.url != '/'){
-        page = request.url + '.html';
+var server = http.createServer((request, response) => {
+  var page = "index.html";
+  if (request.url != "/") {
+    page = request.url + ".html";
+  }
+
+  fs.readFile("./public/" + page, (err, data) => {
+    var headStatus = 200;
+
+    if (err) {
+      headStatus = 404;
+      data = fs.readFileSync("./error/404.html");
     }
 
-    fs.readFile('./public/' + page, (err, data)=>{
-        var headStatus = 200;
-
-        if(err){
-            headStatus = 404;
-            data = fs.readFileSync('./error/404.html');
-        }
-            
-        response.writeHead(headStatus, {'Content-type': 'text/html; charset = utf-8'});
-        response.write(data);
-        response.end();
+    response.writeHead(headStatus, {
+      "Content-type": "text/html; charset = utf-8",
     });
-
-    
+    response.write(data);
+    response.end();
+  });
 });
 
-server.listen(3000, console.log('Escutando na porta 3000!'));
+server.listen(3000, console.log("Escutando na porta 3000!"));
